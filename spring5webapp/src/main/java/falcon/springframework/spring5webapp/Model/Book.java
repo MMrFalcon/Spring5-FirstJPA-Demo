@@ -1,4 +1,4 @@
-package falcon.springframework.spring5webapp;
+package falcon.springframework.spring5webapp.Model;
 
 import javax.persistence.*;
 import java.util.HashSet;
