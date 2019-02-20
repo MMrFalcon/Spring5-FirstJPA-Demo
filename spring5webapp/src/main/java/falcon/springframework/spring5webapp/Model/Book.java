@@ -12,15 +12,13 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
-//    private String publisher;
+
+    @OneToOne
+    private Publisher publisher;
 
     /**
      * 'name' is the name of relationship visible in database
      */
-    @OneToOne
-    @JoinTable(name = "publisher_id")
-    private Publisher publisher;
-
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))

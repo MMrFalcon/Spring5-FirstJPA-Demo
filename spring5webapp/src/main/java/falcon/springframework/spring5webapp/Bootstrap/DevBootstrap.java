@@ -29,7 +29,10 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
-        Publisher superNowa = new Publisher("SuperNowa", "Warsaw 123 - 23, Some street 323/23");
+
+        Publisher superNowa = new Publisher();
+        superNowa.setName("SuperNowa");
+        superNowa.setAddress("Warsaw 123 - 23, Some street 323/23");
         publisherRepository.save(superNowa);
 
         Author andrew = new Author("Andrzej", "Sapkowski");
@@ -41,12 +44,16 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         authorRepository.save(andrew);
         bookRepository.save(wither);
 
-        Publisher another = new Publisher("Another", "Some address, with some street");
-        publisherRepository.save(another);
+//        Publisher another = new Publisher();
+//        another.setName("Another");
+//        another.setAddress("Some address of some street");
+//        publisherRepository.save(another);
 
         Author george = new Author("George", "Martin");
-        Book game = new Book("Game of thrones", "4567", another);
+        Book game = new Book("Game of thrones", "4567", superNowa);
         george.getBooks().add(game);
+        game.getAuthors().add(george);
+
 
         authorRepository.save(george);
         bookRepository.save(game);
