@@ -1,5 +1,6 @@
 package falcon.springframework.spring5webapp.Controller;
 
+import falcon.springframework.spring5webapp.Repositories.AuthorRepository;
 import falcon.springframework.spring5webapp.Repositories.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ public class BookController {
      * Constructor Based Dependency Injection - Possible when class have only one constructor
      * Different method is using @Autowired annotation
      */
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
     }
 
@@ -24,4 +25,5 @@ public class BookController {
 
         return "books";
     }
+
 }
