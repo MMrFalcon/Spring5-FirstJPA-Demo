@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+
     private AuthorRepository authorRepository;
     private BookRepository bookRepository;
     private PublisherRepository publisherRepository;
@@ -27,8 +28,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         initData();
     }
 
-    private void initData() {
-
+    private void initData(){
 
         Publisher superNowa = new Publisher();
         superNowa.setName("SuperNowa");
@@ -44,13 +44,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         authorRepository.save(andrew);
         bookRepository.save(wither);
 
-//        Publisher another = new Publisher();
-//        another.setName("Another");
-//        another.setAddress("Some address of some street");
-//        publisherRepository.save(another);
+        Publisher another = new Publisher();
+        another.setName("Another");
+        another.setAddress("Some address of some street");
+        publisherRepository.save(another);
 
         Author george = new Author("George", "Martin");
-        Book game = new Book("Game of thrones", "4567", superNowa);
+        Book game = new Book("Game of thrones", "4567", another);
         george.getBooks().add(game);
         game.getAuthors().add(george);
 
@@ -58,6 +58,4 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         authorRepository.save(george);
         bookRepository.save(game);
     }
-
-
 }
